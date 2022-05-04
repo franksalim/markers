@@ -198,7 +198,7 @@
                 />
         </LinearLayout>
 
-        <!-- yellow, orange, purple -->
+        <!-- yellow, orange, magenta, purple, cyan -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -329,6 +329,40 @@
             <view
                 class="com.google.android.apps.markers.ToolButton$SwatchButton"
                 markers:color="#FFCC80FF"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="3dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+
+            <view
+                class="com.google.android.apps.markers.ToolButton$SwatchButton"
+                markers:color="#FF408080"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="3dp"
+                />
+
+            <view
+                class="com.google.android.apps.markers.ToolButton$SwatchButton"
+                markers:color="#FF80FFFF"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="3dp"
+                />
+
+            <view
+                class="com.google.android.apps.markers.ToolButton$SwatchButton"
+                markers:color="#FFCCFFFF"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
