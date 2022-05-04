@@ -810,7 +810,7 @@ public class Slate extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         if (mTiledCanvas != null) {
-            canvas.save(Canvas.MATRIX_SAVE_FLAG);
+            canvas.save();
 
             if (mPanX != 0 || mPanY != 0 || !mZoomMatrix.isIdentity()) {
                 canvas.translate(mPanX, mPanY);
@@ -823,7 +823,7 @@ public class Slate extends View {
             }
             
             if (!mDirtyRegion.isEmpty()) {
-                canvas.clipRegion(mDirtyRegion);
+                canvas.clipRect(mDirtyRegion.getBounds());
                 mDirtyRegion.setEmpty();
             }
             // TODO: tune this threshold based on the device density
