@@ -763,17 +763,6 @@ public class MarkersActivity extends Activity
         v.setEnabled(true);
     }
 
-    public void clickSaveAndClear(View v) {
-        if (mSlate.isEmpty()) return;
-
-        v.setEnabled(false);
-        final String filename = System.currentTimeMillis() + ".png"; 
-        saveDrawing(filename, 
-                /*temporary=*/ false, /*animate=*/ true, /*share=*/ false, /*clear=*/ true);
-        Toast.makeText(this, "Drawing saved: " + filename, Toast.LENGTH_SHORT).show();
-        v.setEnabled(true);
-    }
-
     private void setThingyEnabled(Object v, boolean enabled) {
         if (v == null) return;
         if (v instanceof View) ((View)v).setEnabled(enabled);
@@ -858,12 +847,7 @@ public class MarkersActivity extends Activity
         if (mMenuDialog == null) {
             LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.overflow_menu, null);
-    
-    //        TextView text = (TextView) layout.findViewById(R.id.text);
-    //        text.setText("Hello, this is a custom dialog!");
-    //        ImageView image = (ImageView) layout.findViewById(R.id.image);
-    //        image.setImageResource(R.drawable.android);
-    
+
             mMenuDialog = new Dialog(this);
             //mMenuDialog = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK).create();
             Window dialogWin  = mMenuDialog.getWindow();

@@ -24,18 +24,18 @@ import android.widget.ImageView;
 import org.dsandler.apps.markers.R;
 
 class QrCode {
-	static void show(final Activity activity) {
+    static void show(final Activity activity) {
         final AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-		    builder = new AlertDialog.Builder(activity, android.R.style.Theme_Light_Panel);
+            builder = new AlertDialog.Builder(activity, android.R.style.Theme_Light_Panel);
         } else {
-		    builder = new AlertDialog.Builder(activity);
+            builder = new AlertDialog.Builder(activity);
         }
-		builder.setTitle(null);
-		builder.setCancelable(true);
-		ImageView iv = new ImageView(activity);
-		iv.setImageResource(R.drawable.qr);
-		builder.setView(iv);
-		builder.create().show();
-	}
+        builder.setTitle(null);
+        builder.setCancelable(true);
+        ImageView iv = new ImageView(activity);
+        iv.setImageResource(R.drawable.qr);
+        builder.setView(iv);
+        builder.create().show();
+    }
 }

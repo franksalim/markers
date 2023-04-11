@@ -57,7 +57,7 @@ public class ZoomTouchView extends View {
 
     public ZoomTouchView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        
+
         mZoomPaint = new Paint();
         mZoomPaint.setTextSize(25f);
     }
@@ -77,6 +77,7 @@ public class ZoomTouchView extends View {
         pt[1] /= P;
         return pt;
     }
+
     double getSpan(MotionEvent event) {
         int P = event.getPointerCount();
         if (P < 2) return 0;
@@ -87,14 +88,14 @@ public class ZoomTouchView extends View {
         final double y1 = event.getY(1); // + zero[1];
         final double span = Math.hypot(x1 - x0, y1 - y0);
 
-        return span; 
+        return span;
     }
 
     private void doubleClick(MotionEvent event) {
         // this is still broken
         if (DOUBLE_TAP_FATBITS) {
             final float density = mSlate.getDrawingDensity();
-            final float scale = 1f/density;
+            final float scale = 1f / density;
             final Matrix m = new Matrix();
             mTouchPointDoc[0] = mTouchPointDoc[1] = 0f;
             if (getScale(mSlate.getZoom()) == scale) {
@@ -104,7 +105,7 @@ public class ZoomTouchView extends View {
                 mTouchPointDoc[0] = mTouchPoint[0] - mSlate.getZoomPosX();
                 mTouchPointDoc[1] = mTouchPoint[1] - mSlate.getZoomPosY();
                 mSlate.getZoomInv().mapPoints(mTouchPointDoc);
-                m.preScale(scale*DOUBLE_TAP_ZOOM_LEVEL, scale*DOUBLE_TAP_ZOOM_LEVEL);
+                m.preScale(scale * DOUBLE_TAP_ZOOM_LEVEL, scale * DOUBLE_TAP_ZOOM_LEVEL);
 
                 mSlate.setZoomPosNoInval(mTouchPointDoc);
                 mSlate.setZoom(m);
@@ -158,8 +159,8 @@ public class ZoomTouchView extends View {
                         Matrix m = new Matrix(mInitialZoomMatrix);
                         final float currentScale = getScale(m);
 
-                        scale = Math.max(Math.min(scale*currentScale, 20.0f), 0.1f)
-                                    / currentScale;
+                        scale = Math.max(Math.min(scale * currentScale, 20.0f), 0.1f)
+                                / currentScale;
 
                         m.preScale(scale, scale, mTouchPointDoc[0], mTouchPointDoc[1]);
 
@@ -188,6 +189,7 @@ public class ZoomTouchView extends View {
     }
 
     private static final float[] mvals = new float[9];
+
     public static float getScale(Matrix m) {
         m.getValues(mvals);
         return mvals[0];
@@ -198,7 +200,7 @@ public class ZoomTouchView extends View {
         super.onDraw(canvas);
 
         if (!isEnabled()) return;
-        
+
         final Matrix m = mSlate.getZoom();
         final int x = (int) mSlate.getZoomPosX();
         final int y = (int) mSlate.getZoomPosY();
@@ -206,11 +208,11 @@ public class ZoomTouchView extends View {
         //final float scale = m.mapRadius(1f);
         final float scale = getScale(m);
         canvas.drawText(String.format("%d%% %+d,%+d",
-                            (int)(scale * 100f),
-                            x,
-                            y),
+                        (int) (scale * 100f),
+                        x,
+                        y),
                 canvas.getWidth() - 200, canvas.getHeight() - 20, mZoomPaint);
-        
+
         if (!DEBUG_OVERLAY) return;
 
         setVisibility(View.VISIBLE);
@@ -223,6 +225,6 @@ public class ZoomTouchView extends View {
         pt.setTextSize(20f);
         pt.setColor(0x80FF0000);
         if (mTouchPoint[0] != 0)
-        canvas.drawCircle(mTouchPoint[0], mTouchPoint[1], 50 * (float) mSlate.getScaleX(), pt);
+            canvas.drawCircle(mTouchPoint[0], mTouchPoint[1], 50 * (float) mSlate.getScaleX(), pt);
     }
 }

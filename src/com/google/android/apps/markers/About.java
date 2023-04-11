@@ -106,11 +106,6 @@ class About {
                 dialog.dismiss();
                 QrCode.show(activity);
             }});
-//        builder.setNegativeButton("Neat!", new OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.dismiss();
-//            }});
 		builder.create().show();
 	}
 }
